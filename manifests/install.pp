@@ -13,14 +13,12 @@
 #
 # Sample Usage: include spark::install
 #
-class spark::install(
-      $spark_package = hiera("spark_package")
-      $spark_version = hiera("spark_version")
-      $scala_version = hiear("scala_version")
-    ) {
-    
- spark::requires { "$name-requires-scala": package => 'scala', ensure => $scala_version }
-   
+class spark::install inherits spark::params {
+
+  spark::requires { "$name-requires-scala":
+    package => 'scala',
+    ensure => $scala_version
+  }
   
   package { [$spark_package]:
     ensure => $spark_version

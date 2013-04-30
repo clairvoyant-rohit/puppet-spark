@@ -28,9 +28,9 @@ class spark::config inherits spark::params {
     line => 'export SCALA_LIBRARY_PATH="$scala_lib"',
   }
   
-  file { "${spark_home}/conf/spark_env.sh":
+  file { "${spark_home}/conf/spark-env.sh":
     ensure => file, 
-    content => template("spark/spark_env.sh.erb"), 
+    content => template("spark/spark-env.sh.erb"), 
 #   owner => $user,
 #   group => $group,
     mode => 644, 
@@ -50,7 +50,7 @@ class spark::config inherits spark::params {
     content => template("spark/spark-shell.erb"), 
 #   owner => $user,
 #   group => $group,
-    mode => 0666,
+    mode => 0755,
   }
   
   
@@ -59,7 +59,7 @@ class spark::config inherits spark::params {
     content => template("spark/spark-run.erb"), 
 #   owner => $user,
 #   group => $group,
-    mode => 0666,
+    mode => 0755,
   }
 
 
