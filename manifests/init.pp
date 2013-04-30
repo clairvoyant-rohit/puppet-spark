@@ -23,19 +23,21 @@
 #
 # === Examples
 #
-#  class { spark:
-#    servers => [ 'pool.ntp.org', 'ntp.local.company.com' ]
-#  }
+#  class { spark: }
 #
 # === Authors
 #
-# Author Name <author@domain.com>
+# Tomas Barton <barton.tomas@gmail.com>
 #
 # === Copyright
 #
-# Copyright 2013 Your name here, unless otherwise noted.
+# Copyright 2013 Tomas Barton
 #
 class spark {
 
+  anchor { 'spark::start': }->
+  class { 'spark::install': }->
+  class { 'spark::config': }->
+  anchor { 'spark::end': }
 
 }
