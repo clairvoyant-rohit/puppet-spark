@@ -22,7 +22,7 @@
 # - SPARK_CLASSPATH, to add elements to Spark's classpath
 # - SPARK_JAVA_OPTS, to add JVM options
 # - SPARK_LIBRARY_PATH, to add extra search paths for native libraries.
-MESOS_NATIVE_LIBRARY="<%= scope.lookupvar('spark::params::mesos_lib') %>"
-SCALA_HOME="<%= scope.lookupvar('spark::params::scala_home') %>"
-SCALA_LIBRARY_PATH="<%= scope.lookupvar('spark::params::scala_lib') %>"
-SPARK_LIBRARY_PATH="<%= scope.lookupvar('spark::params::spark_home') %>"
+export MESOS_NATIVE_LIBRARY="<%= scope.lookupvar('spark::params::mesos_lib') %>"
+export SCALA_HOME="<%= scope.lookupvar('spark::params::scala_home') %>"
+export SCALA_LIBRARY_PATH="<%= scope.lookupvar('spark::params::scala_lib') %>"
+export SPARK_LIBRARY_PATH="<%= scope.lookupvar('spark::params::spark_home') %>"
