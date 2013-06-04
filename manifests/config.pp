@@ -45,6 +45,15 @@ class spark::config inherits spark::params {
   }
   
   
+  file { "${spark_home}/run":
+    ensure => file, 
+    content => template("spark/run.erb"), 
+#   owner => $user,
+#   group => $group,
+    mode => 755, 
+  }
+  
+  
   file { "/usr/local/sbin/spark-shell":
     ensure => file, 
     content => template("spark/spark-shell.erb"), 
