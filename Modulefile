@@ -1,11 +1,11 @@
 name    'puppet-spark'
 version '0.0.1'
-source 'UNKNOWN'
+source 'https://github.com/deric/puppet-spark.git'
 author 'Tomas Barton'
 license 'Apache License, Version 2.0'
-summary 'UNKNOWN'
-description 'UNKNOWN'
-project_page 'UNKNOWN'
+summary 'Spark integration'
+description 'A puppet hiera module for Spark integration'
+project_page 'https://github.com/deric/puppet-spark'
 
 ## Add dependencies, if any:
 # dependency 'username/name', '>= 1.2.0'
