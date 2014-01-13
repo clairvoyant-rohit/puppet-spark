@@ -1,5 +1,0 @@
-#!/bin/bash
-
-FWDIR="$(cd <%= scope.lookupvar('spark::params::spark_home') %>; pwd)"
-exec $FWDIR/run spark.repl.Main "$@"
-

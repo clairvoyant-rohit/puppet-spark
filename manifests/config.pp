@@ -12,7 +12,7 @@
 #
 class spark::config inherits spark::params {
   require spark::install
-  
+
   file_line { 'etc_profile_mesos_lib':
     path => '/etc/profile',
     line => 'export MESOS_NATIVE_LIBRARY="$mesos_lib"',
@@ -27,49 +27,21 @@ class spark::config inherits spark::params {
     path => '/etc/profile',
     line => 'export SCALA_LIBRARY_PATH="$scala_lib"',
   }
-  
+
   file { "${spark_home}/conf/spark-env.sh":
-    ensure => file, 
-    content => template("spark/spark-env.sh.erb"), 
+    ensure => file,
+    content => template("spark/spark-env.sh.erb"),
 #   owner => $user,
 #   group => $group,
-    mode => 644, 
-  }
-  
-  file { "${spark_home}/conf/log4j.properties":
-    ensure => file, 
-    content => template("spark/log4j.properties.erb"), 
-#   owner => $user,
-#   group => $group,
-    mode => 644, 
-  }
-  
-  
-  file { "${spark_home}/run":
-    ensure => file, 
-    content => template("spark/run.erb"), 
-#   owner => $user,
-#   group => $group,
-    mode => 755, 
-  }
-  
-  
-  file { "/usr/local/sbin/spark-shell":
-    ensure => file, 
-    content => template("spark/spark-shell.erb"), 
-#   owner => $user,
-#   group => $group,
-    mode => 0755,
-  }
-  
-  
-  file { "/usr/local/sbin/spark-run":
-    ensure => file, 
-    content => template("spark/spark-run.erb"), 
-#   owner => $user,
-#   group => $group,
-    mode => 0755,
+    mode => 644,
   }
 
+  file { "${spark_home}/conf/log4j.properties":
+    ensure => file,
+    content => template("spark/log4j.properties.erb"),
+#   owner => $user,
+#   group => $group,
+    mode => 644,
+  }
 
 }
