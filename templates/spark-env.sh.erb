@@ -26,4 +26,7 @@ export SCALA_LIBRARY_PATH="<%= scope.lookupvar('spark::params::scala_lib') %>"
 
 export MASTER="<%= scope.lookupvar('mesos::zookeeper') %>"
 export SPARK_HOME="<%= scope.lookupvar('spark::params::spark_home') %>"
-export SPARK_LOCAL_IP="<%= scope.lookupvar('ipaddress') %>"
+<% ipaddress = scope.lookupvar('ipaddress_public') -%>
+<% ipaddress ||= scope.lookupvar('public_ip') -%>
+<% ipaddress ||= scope.lookupvar('ipaddress') -%>
+export SPARK_LOCAL_IP="<%= ipaddress %>"
