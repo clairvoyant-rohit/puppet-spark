@@ -2,6 +2,6 @@
 .tmp/*
 *.log
 *.tmp
-spec/fixtures/*
+spec/fixtures/modules/*
 pkg/*
 
