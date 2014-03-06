@@ -37,7 +37,7 @@ class spark(
   $mesos_master  = 'localhost:5050',
   $package       = 'apache-spark',
   $version       = 'present',
-  $home          = '/usr/share/spark',
+  $home          = '/tmp/spark',
   $scala_version = '2.9.3-400',
   $scala_home    = '/usr',
   $scala_lib     = '/usr/share/java',
