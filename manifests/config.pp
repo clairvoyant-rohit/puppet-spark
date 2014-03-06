@@ -10,8 +10,16 @@
 #
 # Sample Usage: include spark::config
 #
-class spark::config inherits spark::params {
-  require spark::install
+class spark::config(
+  $mesos_master,
+  $executor_uri,
+  $local_ip,
+  $home          = '/usr/share/spark',
+  $scala_version = '2.9.3-400',
+  $scala_home    = '/usr',
+  $scala_lib     = '/usr/share/java',
+  $mesos_lib     = '/usr/local/lib/libmesos.so',
+  ) inherits spark {
 
   file_line { 'etc_profile_mesos_lib':
     path => '/etc/profile',
@@ -28,7 +36,7 @@ class spark::config inherits spark::params {
     line => 'export SCALA_LIBRARY_PATH="$scala_lib"',
   }
 
-  file { "${spark_home}/conf/spark-env.sh":
+  file { "${home}/conf/spark-env.sh":
     ensure => file,
     content => template("spark/spark-env.sh.erb"),
 #   owner => $user,
@@ -36,7 +44,7 @@ class spark::config inherits spark::params {
     mode => 644,
   }
 
-  file { "${spark_home}/conf/log4j.properties":
+  file { "${home}/conf/log4j.properties":
     ensure => file,
     content => template("spark/log4j.properties.erb"),
 #   owner => $user,

@@ -13,9 +13,11 @@
 #
 # Sample Usage: include spark::install
 #
-class spark::install inherits spark::params {
-
-  package { [$spark_package]:
-    ensure => $spark_version
+class spark::install(
+  $package = 'apache-spark',
+  $version = '0.9.0',
+  ) {
+  package { [$package]:
+    ensure => $version
   }
 }

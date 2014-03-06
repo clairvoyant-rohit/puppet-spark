@@ -20,14 +20,11 @@
 # - SPARK_WORKER_INSTANCES, to set the number of worker processes per node
 # - SPARK_WORKER_DIR, to set the working directory of worker processes
 
-export MESOS_NATIVE_LIBRARY="<%= scope.lookupvar('spark::params::mesos_lib') %>"
-export SCALA_HOME="<%= scope.lookupvar('spark::params::scala_home') %>"
-export SCALA_LIBRARY_PATH="<%= scope.lookupvar('spark::params::scala_lib') %>"
-export SPARK_EXECUTOR_URI="/usr/share/sparks"
+export MESOS_NATIVE_LIBRARY="<%= @mesos_lib %>"
+export SCALA_HOME="<%= @scala_home %>"
+export SCALA_LIBRARY_PATH="<%= @scala_lib %>"
+export SPARK_EXECUTOR_URI="<%= @executor_uri %>"
 
-export MASTER="mesos://<%= scope.lookupvar('mesos::zookeeper') %>"
-export SPARK_HOME="<%= scope.lookupvar('spark::params::spark_home') %>"
-<% ipaddress = scope.lookupvar('ipaddress_public') -%>
-<% ipaddress ||= scope.lookupvar('public_ip') -%>
-<% ipaddress ||= scope.lookupvar('ipaddress') -%>
-export SPARK_LOCAL_IP="<%= ipaddress %>"
+export MASTER="mesos://<%= @mesos_master %>"
+export SPARK_HOME="<%= @home %>"
+export SPARK_LOCAL_IP="<%= @local_ip %>"

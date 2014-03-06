@@ -31,13 +31,35 @@
 #
 # === Copyright
 #
-# Copyright 2013 Tomas Barton
+# Copyright 2013-2014 Tomas Barton
 #
-class spark {
+class spark(
+  $mesos_master  = 'localhost:5050',
+  $package       = 'apache-spark',
+  $version       = '0.9.0',
+  $home          = '/usr/share/spark',
+  $scala_version = '2.9.3-400',
+  $scala_home    = '/usr',
+  $scala_lib     = '/usr/share/java',
+  $mesos_lib     = '/usr/local/lib/libmesos.so',
+  $executor_uri  = '/usr/share/spark',
+  $local_ip      = $::ipaddress,
+  ) {
 
   anchor { 'spark::start': }->
-  class { 'spark::install': }->
-  class { 'spark::config': }->
+  class { 'spark::install':
+    package => $package,
+    version => $version,
+  }->
+  class { 'spark::config':
+    scala_version => $scala_version,
+    scala_home    => $scala_home,
+    scala_lib     => $scala_lib,
+    mesos_master  => $mesos_master,
+    mesos_lib     => $mesos_lib,
+    executor_uri  => $executor_uri,
+    local_ip      => $local_ip,
+  }->
   anchor { 'spark::end': }
 
 }
