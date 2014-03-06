@@ -24,7 +24,7 @@ export MESOS_NATIVE_LIBRARY="<%= scope.lookupvar('spark::params::mesos_lib') %>"
 export SCALA_HOME="<%= scope.lookupvar('spark::params::scala_home') %>"
 export SCALA_LIBRARY_PATH="<%= scope.lookupvar('spark::params::scala_lib') %>"
 
-export MASTER="<%= scope.lookupvar('mesos::zookeeper') %>"
+export MASTER="mesos://<%= scope.lookupvar('mesos::zookeeper') %>"
 export SPARK_HOME="<%= scope.lookupvar('spark::params::spark_home') %>"
 <% ipaddress = scope.lookupvar('ipaddress_public') -%>
 <% ipaddress ||= scope.lookupvar('public_ip') -%>
