@@ -15,7 +15,7 @@
 #
 class spark::install(
   $package = 'apache-spark',
-  $version = '0.9.0',
+  $ensure  = 'present',
   ) {
   package { [$package]:
     ensure => $version

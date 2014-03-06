@@ -36,7 +36,7 @@
 class spark(
   $mesos_master  = 'localhost:5050',
   $package       = 'apache-spark',
-  $version       = '0.9.0',
+  $version       = 'present',
   $home          = '/usr/share/spark',
   $scala_version = '2.9.3-400',
   $scala_home    = '/usr',
@@ -49,7 +49,7 @@ class spark(
   anchor { 'spark::start': }->
   class { 'spark::install':
     package => $package,
-    version => $version,
+    ensure  => $version,
   }->
   class { 'spark::config':
     scala_version => $scala_version,
