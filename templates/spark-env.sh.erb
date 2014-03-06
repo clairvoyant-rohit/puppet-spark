@@ -23,6 +23,7 @@
 export MESOS_NATIVE_LIBRARY="<%= scope.lookupvar('spark::params::mesos_lib') %>"
 export SCALA_HOME="<%= scope.lookupvar('spark::params::scala_home') %>"
 export SCALA_LIBRARY_PATH="<%= scope.lookupvar('spark::params::scala_lib') %>"
+export SPARK_EXECUTOR_URI="/usr/share/sparks"
 
 export MASTER="mesos://<%= scope.lookupvar('mesos::zookeeper') %>"
 export SPARK_HOME="<%= scope.lookupvar('spark::params::spark_home') %>"
