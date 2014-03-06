@@ -4,6 +4,10 @@ describe 'spark' do
 
   it { should compile.with_all_deps }
 
+  it { should contain_package('apache-spark').with({
+      'ensure' => 'present'
+  }) }
+
   context 'install package' do
     let(:version) { '0.9.0' }
     let(:params) {{

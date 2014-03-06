@@ -18,6 +18,6 @@ class spark::install(
   $ensure  = 'present',
   ) {
   package { [$package]:
-    ensure => $version
+    ensure => $ensure
   }
 }
