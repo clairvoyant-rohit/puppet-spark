@@ -2,7 +2,9 @@
 #
 # This module manages the spark configuration directories
 #
-# Parameters: None
+# Parameters:
+#
+# [print_cmd] when 1 spark-executor will print running command
 #
 # Actions: None
 #
@@ -19,6 +21,7 @@ class spark::config(
   $scala_home    = '/usr',
   $scala_lib     = '/usr/share/java',
   $mesos_lib     = '/usr/local/lib/libmesos.so',
+  $print_cmd     = '1',
   ) inherits spark {
 
   file_line { 'etc_profile_mesos_lib':
@@ -37,19 +40,19 @@ class spark::config(
   }
 
   file { "${home}/conf/spark-env.sh":
-    ensure => file,
+    ensure => 'present',
     content => template("spark/spark-env.sh.erb"),
 #   owner => $user,
 #   group => $group,
-    mode => 644,
+    mode => 0644,
   }
 
   file { "${home}/conf/log4j.properties":
-    ensure => file,
+    ensure => 'present',
     content => template("spark/log4j.properties.erb"),
 #   owner => $user,
 #   group => $group,
-    mode => 644,
+    mode => 0644,
   }
 
 }
