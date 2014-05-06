@@ -6,7 +6,8 @@
 #
 # [print_cmd] when 1 spark-executor will print running command
 #
-# Actions: None
+# [paths] extra paths to be included on Spark classpath
+#
 #
 # Requires: spark::install, spark
 #
@@ -22,7 +23,10 @@ class spark::config(
   $scala_lib     = '/usr/share/java',
   $mesos_lib     = '/usr/local/lib/libmesos.so',
   $print_cmd     = '1',
-  ) inherits spark {
+  $paths         = [], # extra class paths
+  ) {
+
+  validate_array($paths)
 
   file_line { 'etc_profile_mesos_lib':
     path => '/etc/profile',

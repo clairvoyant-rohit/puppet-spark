@@ -30,3 +30,9 @@ export MASTER="mesos://<%= @mesos_master %>"
 export SPARK_HOME="<%= @home %>"
 export SPARK_LOCAL_IP="<%= @local_ip %>"
 export SPARK_PRINT_LAUNCH_COMMAND="<%= @print_cmd %>"
+<% if !@paths.nil? && !@paths.empty? -%>
+<% @paths.sort.each do |val| -%>
+CLASSPATH=$CLASSPATH:<%= val %>
+<% end -%>
+<% end -%>
+export CLASSPATH=$CLASSPATH:$SPARK_HOME/lib/
