@@ -17,13 +17,14 @@ class spark::config(
   $mesos_master,
   $executor_uri,
   $local_ip,
-  $home          = '/usr/share/spark',
-  $scala_version = '2.9.3-400',
-  $scala_home    = '/usr',
-  $scala_lib     = '/usr/share/java',
-  $mesos_lib     = '/usr/local/lib/libmesos.so',
-  $print_cmd     = '1',
-  $paths         = [], # extra class paths
+  $home              = '/usr/share/spark',
+  $scala_version     = '2.9.3-400',
+  $scala_home        = '/usr',
+  $scala_lib         = '/usr/share/java',
+  $mesos_lib         = '/usr/local/lib/libmesos.so',
+  $print_cmd         = '1',
+  $paths             = [], # extra class paths
+  $console_log_level = 'INFO', # INFO, ERROR, NOTICE
   ) {
 
   validate_array($paths)
