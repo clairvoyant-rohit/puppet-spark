@@ -42,7 +42,7 @@ class spark(
   $scala_home    = '/usr',
   $scala_lib     = '/usr/share/java',
   $mesos_lib     = '/usr/local/lib/libmesos.so',
-  $executor_uri  = '/usr/share/spark',
+  $executor_uri  = '',
   $local_ip      = $::ipaddress,
   ) {
 

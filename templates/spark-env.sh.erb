@@ -24,8 +24,9 @@
 export MESOS_NATIVE_LIBRARY="<%= @mesos_lib %>"
 export SCALA_HOME="<%= @scala_home %>"
 export SCALA_LIBRARY_PATH="<%= @scala_lib %>"
+<% if !@executor_uri.nil? && !@executor_uri.empty? -%>
 export SPARK_EXECUTOR_URI="<%= @executor_uri %>"
-
+<% end -%>
 export MASTER="mesos://<%= @mesos_master %>"
 export SPARK_HOME="<%= @home %>"
 export SPARK_LOCAL_IP="<%= @local_ip %>"
